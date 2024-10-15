@@ -4,7 +4,7 @@ from screen import Screen
 
 class Game:
 
-    def __int__(self):
+    def __init__(self):
         self.running = True
         self.screen = Screen()
 
