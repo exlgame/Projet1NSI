@@ -2,8 +2,8 @@ import pygame
 
 
 class Screen:
-    def __int__(self):
-        self.display = pygame.display.set_mode((1920, 1080), pygame.FULLSCREEN)
+    def __init__(self):
+        self.display = pygame.display.set_mode((1920, 1080))
         pygame.display.set_caption("Pokemon")
         self.clock = pygame.time.Clock()
         self.framerate = 60
