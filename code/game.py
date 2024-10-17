@@ -17,6 +17,7 @@ class Game:
 
     def run(self):
         while self.running:
+            self.handle_input()
             self.map.update()
             self.screen.update()
 
