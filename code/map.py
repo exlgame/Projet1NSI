@@ -1,3 +1,5 @@
+import json
+
 import pygame
 import pytmx
 import pyscroll
@@ -32,3 +34,12 @@ class Map:
         self.group.update()
         self.group.center(self.player.rect.center)
         self.group.draw(self.screen.get_display())
+
+    def save_in_file(self, path: str):
+        if not pathlib.Path(f"../assets/saves/{path}/maps/{self.current_map.name}").exists():
+            os.makedirs(f"../assets/saves/{path}/maps/{self.current_map.name}")
+        with open(f"../assets/saves/{path}/maps/{self.current_map.name}", "w") as file:
+            json.dump(self.tmx_data.tiledgdimap,file)
+        for i,layer in enumerate(self.tmx_data.visible_layers):
+            with open(f"../assets/saves/{path}/maps/{self.current_map.name}/layer{i}", "w") as file:
+                json.dump(layer.data,file)
