@@ -34,6 +34,7 @@ class Map:
 
         self.switchs = []
         self.collisions = []
+
         for obj in self.tmx_data.objects:
             if obj.name == "collision":
                 self.collisions.append(pygame.Rect(obj.x, obj.y, obj.width, obj.height))
@@ -49,7 +50,7 @@ class Map:
             self.player.align_hitbox()
             self.player.step = 16
             self.player.add_switchs(self.switchs)
-            self.player.add_collisions(self.collsions)
+            self.player.add_collisions(self.collisions)
             self.group.add(self.player)
             if switch.name.split("_")[0] != "map":
                 self.player.switch_bike(True)
@@ -61,7 +62,7 @@ class Map:
         self.player = player
         self.player.align_hitbox()
         self.player.add_switchs(self.switchs)
-
+        self.player.add_collisions(self.collisions)
 
     def update(self) -> None:
         if self.player:

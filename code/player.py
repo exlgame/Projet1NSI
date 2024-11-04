@@ -1,11 +1,9 @@
 import pygame
-from pygame.examples.go_over_there import delta_time
 
 from entity import Entity
 from keylistener import KeyListener
 from screen import Screen
 from switch import Switch
-
 
 
 class Player(Entity):
@@ -79,7 +77,7 @@ class Player(Entity):
         if self.keylistener.key_pressed(pygame.K_b):
             self.switch_bike()
 
-    def switch_bike(self, deactive = False):
+    def switch_bike(self, deactive=False):
         if self.speed == 1 and not deactive:
             self.speed = 2
             self.all_images = self.get_all_images(self.spritesheet_bike)
