@@ -13,7 +13,7 @@ class Game:
         self.screen = Screen()
         self.map = Map(self.screen)
         self.keylistener = Keylistener()
-        self.player = Player(self.keylistener, self.screen, 0, 0)
+        self.player = Player(self.keylistener, self.screen, 512, 288)
         self.map.add_player(self.player)
 
     def run(self):
