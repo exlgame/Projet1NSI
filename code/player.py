@@ -4,13 +4,15 @@ from pygame.display import update
 from entity import Entity
 from screen import Screen
 from keylistener import Keylistener
-
+from switch import Switch
 class Player(Entity):
 
     def __init__(self, keylistener: Keylistener,screen : Screen, x: int,y: int):
         super().__init__(keylistener,screen,x,y)
 
         self.pokedollars = 0
+
+        self.switchs: list[Switch] | None
 
     def update(self):
         self.check_move()
@@ -26,3 +28,5 @@ class Player(Entity):
                 self.move_up()
             elif self.keylistener.keypressed(pygame.K_s):
                 self.move_down()
+    def add_switchs(self, switchs: list[Switch]):
+        self.switchs = switchs

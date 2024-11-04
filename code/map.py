@@ -6,6 +6,7 @@ import pyscroll
 
 from player import Player
 from screen import Screen
+from switch import Switch
 
 class Map:
 
@@ -14,9 +15,9 @@ class Map:
         self.tmx_data = None
         self.map_layer = None
         self.group = None
-        self.switch_map("map0")
-        self.player : Player | None = None
-
+        self.player: Player | None = None
+        self.switchs: list[Switch] | None = None
+        self.switch_map("map_0")
     def switch_map(self, map: str):
         self.tmx_data = pytmx.load_pygame(f"../assets/map/{map}.tmx")
         map_data = pyscroll.data.TiledMapData(self.tmx_data)
@@ -24,7 +25,14 @@ class Map:
         self.map_layer.zoom = 3
         self.group = pyscroll.PyscrollGroup(map_layer=self.map_layer, default_layer=7)
 
+        self.switchs = []
 
+        for obj in self.tmx_data.objects:
+            type = obj.name.split(" ")[0]
+            if type == "switch":
+                self.switchs.append(Switch(
+                    type, obj.name.split(" ")[1], pygame.Rect(obj.x, obj.y, obj.width, obj.height), int(obj.name.split(" ")[-1])
+                ))
     def add_player(self, player):
         self.group.add(player)
         self.player = player
