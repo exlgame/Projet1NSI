@@ -1,5 +1,3 @@
-from tabnanny import check
-
 import pygame
 
 from entity import Entity
@@ -8,13 +6,14 @@ from screen import Screen
 from switch import Switch
 
 
+
 class Player(Entity):
     def __init__(self, keylistener: KeyListener, screen: Screen, x: int, y: int):
         super().__init__(keylistener, screen, x, y)
         self.pokedollars: int = 0
 
         self.switchs: list[Switch] | None = None
-        self.collisions: list[pygame.Rect]
+        self.collisions: list[pygame.Rect] | None = None
         self.change_map: Switch | None = None
 
     def update(self) -> None:
@@ -29,18 +28,29 @@ class Player(Entity):
                 if not self.check_collisions(temp_hitbox):
                     self.check_collisions_switchs(temp_hitbox)
                     self.move_left()
+                else:
+                    self.direction = "left"
             elif self.keylistener.key_pressed(pygame.K_d):
                 temp_hitbox.x += 16
-                self.check_collisions_switchs(temp_hitbox)
-                self.move_right()
+                if not self.check_collisions(temp_hitbox):
+                    self.check_collisions_switchs(temp_hitbox)
+                    self.move_right()
+                else:
+                    self.direction = "right"
             elif self.keylistener.key_pressed(pygame.K_z):
                 temp_hitbox.y -= 16
-                self.check_collisions_switchs(temp_hitbox)
-                self.move_up()
+                if not self.check_collisions(temp_hitbox):
+                    self.check_collisions_switchs(temp_hitbox)
+                    self.move_up()
+                else:
+                    self.direction = "up"
             elif self.keylistener.key_pressed(pygame.K_s):
                 temp_hitbox.y += 16
-                self.check_collisions_switchs(temp_hitbox)
-                self.move_down()
+                if not self.check_collisions(temp_hitbox):
+                    self.check_collisions_switchs(temp_hitbox)
+                    self.move_down()
+                else:
+                    self.direction = "down"
 
     def add_switchs(self, switchs: list[Switch]):
         self.switchs = switchs
@@ -56,7 +66,7 @@ class Player(Entity):
         self.collisions = collisions
 
     def check_collisions(self, temp_hitbox: pygame.Rect):
-        for collisions in self.collisions:
-            if temp_hitbox.colliderect(collisions):
+        for collision in self.collisions:
+            if temp_hitbox.colliderect(collision):
                 return True
         return False

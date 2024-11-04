@@ -26,6 +26,8 @@ class Entity(pygame.sprite.Sprite):
         self.animtion_step_time: float = 0.0
         self.action_animation: int = 16
 
+        self.speed: int = 1
+
     def update(self) -> None:
         self.animation_sprite()
         self.move()
@@ -59,13 +61,13 @@ class Entity(pygame.sprite.Sprite):
         if self.animation_walk:
             self.animtion_step_time += self.screen.get_delta_time()
             if self.step < 16 and self.animtion_step_time >= self.action_animation:
-                self.step += 1
+                self.step += self.speed
                 if self.direction == "left":
-                    self.position.x -= 1
+                    self.position.x -= self.speed
                 elif self.direction == "right":
-                    self.position.x += 1
+                    self.position.x += self.speed
                 elif self.direction == "up":
-                    self.position.y -= 1
+                    self.position.y -= self.speed
                 elif self.direction == "down":
                     self.position.y += 1
                 self.animtion_step_time = 0
