@@ -1,3 +1,5 @@
+from tabnanny import check
+
 import pygame
 
 from entity import Entity
@@ -12,6 +14,7 @@ class Player(Entity):
         self.pokedollars: int = 0
 
         self.switchs: list[Switch] | None = None
+        self.collisions: list[pygame.Rect]
         self.change_map: Switch | None = None
 
     def update(self) -> None:
@@ -23,8 +26,9 @@ class Player(Entity):
             temp_hitbox = self.hitbox.copy()
             if self.keylistener.key_pressed(pygame.K_q):
                 temp_hitbox.x -= 16
-                self.check_collisions_switchs(temp_hitbox)
-                self.move_left()
+                if not self.check_collisions(temp_hitbox):
+                    self.check_collisions_switchs(temp_hitbox)
+                    self.move_left()
             elif self.keylistener.key_pressed(pygame.K_d):
                 temp_hitbox.x += 16
                 self.check_collisions_switchs(temp_hitbox)
@@ -47,3 +51,12 @@ class Player(Entity):
                 if switch.check_collision(temp_hitbox):
                     self.change_map = switch
         return None
+
+    def add_collisions(self, collisions):
+        self.collisions = collisions
+
+    def check_collisions(self, temp_hitbox: pygame.Rect):
+        for collisions in self.collisions:
+            if temp_hitbox.colliderect(collisions):
+                return True
+        return False
