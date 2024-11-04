@@ -116,7 +116,7 @@
  <group id="14" name="objet">
   <objectgroup id="16" name="interface">
    <object id="28" name="switch house_0 0" x="128.25" y="47.75" width="15.75" height="23.5"/>
-   <object id="29" name="spawn house_0 0" x="111.75" y="61.5">
+   <object id="29" name="spawn house_0 0" x="128" y="64">
     <point/>
    </object>
   </objectgroup>
