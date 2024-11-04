@@ -15,6 +15,7 @@ class Map:
 
         self.player: Player | None = None
         self.switchs: list[Switch] | None = None
+        self.collisions: list[pygame.Rect]
 
         self.current_map: Switch = Switch("switch", "map_0", pygame.Rect(0, 0, 0, 0), 0)
 
