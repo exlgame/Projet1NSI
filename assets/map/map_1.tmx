@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="17" nextobjectid="5">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="17" nextobjectid="6">
  <tileset firstgid="1" source="tileset/tileset_pokemon_sdk.tsx"/>
  <tileset firstgid="4257" source="tileset/indoor.tsx"/>
  <tileset firstgid="9049" source="tileset/interieur1.tsx"/>
@@ -125,9 +125,9 @@
 </data>
  </layer>
  <objectgroup id="6" name="Calque d'Objets 1">
-  <object id="3" name="switch map_0 0" x="-16" y="128" width="16" height="32"/>
   <object id="4" name="spawn map_0 0" x="0" y="128">
    <point/>
   </object>
+  <object id="5" name="switch map_0 0" x="-16" y="112" width="16" height="64"/>
  </objectgroup>
 </map>
