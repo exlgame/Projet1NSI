@@ -16,8 +16,8 @@
 410,410,410,410,410,410,410,410,410,410
 </data>
  </layer>
- <objectgroup id="9" name="collision"/>
  <group id="8" name="objet">
+  <objectgroup id="9" name="collision"/>
   <objectgroup id="10" name="interafce"/>
  </group>
  <layer id="2" name="mur" width="10" height="10">
