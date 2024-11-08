@@ -6,6 +6,7 @@ from player import Player
 from screen import Screen
 from switch import Switch
 
+
 class Map:
     def __init__(self, screen: Screen):
         self.screen: Screen = screen
