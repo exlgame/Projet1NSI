@@ -828,7 +828,7 @@
    <object id="678" name="spawn map_1 0" x="736" y="160">
     <point/>
    </object>
-   <object id="679" name="switch map_2 0" x="496" y="960" width="47.5" height="16.5"/>
+   <object id="679" name="switch map_2 0" x="496" y="944" width="47.5" height="16.5"/>
    <object id="680" name="spawn map_2 0" x="520.5" y="941">
     <point/>
    </object>

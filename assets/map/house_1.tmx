@@ -169,7 +169,6 @@
    <object id="51" name="collision" x="240" y="32" width="16" height="208"/>
    <object id="52" name="collision" x="0" y="16" width="240" height="16"/>
    <object id="53" name="collision" x="-16" y="32" width="16" height="128"/>
-   <object id="58" name="collision" x="96" y="160" width="16" height="16"/>
    <object id="59" name="collision" x="96" y="32" width="32" height="16"/>
    <object id="60" name="collision" x="128" y="32" width="48" height="32"/>
    <object id="61" name="collision" x="176" y="32" width="32" height="16"/>
