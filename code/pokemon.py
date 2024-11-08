@@ -46,6 +46,23 @@ class Pokemon:
         self.ivs = {key: random.randint(1, 31) for key in self.get_base_stats().keys()}
         self.base_stats = self.get_base_stats()
 
+        self.maxhp = self.update_stats("hp")
+        self.hp = self.update_stats("hp")
+        self.atk = self.update_stats("atk")
+        self.dfe = self.update_stats("dfe")
+        self.ats = self.update_stats("ats")
+        self.dfs = self.update_stats("dfs")
+        self.spd = self.update_stats("spd")
+
+        self.shiny = "shiny" if random.randint(1, 10) == 1 else ""
+        self.xp = 0
+        self.points_ev = 0
+
+        self.status = ""
+        self.xp_to_next_level = self.xp_to_next_level()
+
+        self.evolutions = None
+
     def get_types(self):
         type1 = self.forms['type1']
         type2 = self.forms['type2']
@@ -70,5 +87,26 @@ class Pokemon:
         level = self.level
         nature = 1
         if stat == "hp":
-            return math.floor(((2 * base_stat + iv + math.floor(ev / 4)) * level/100) + level / 10)
-        return math.floor((((2 * base_stat + iv + math.floor(ev / 4)) * level/100) + 5) * nature)
+            return math.floor(((2 * base_stat + iv + math.floor(ev / 4)) * level / 100) + level / 10)
+        return math.floor((((2 * base_stat + iv + math.floor(ev / 4)) * level / 100) + 5) * nature)
+
+    def xp_to_next_level(self):
+        if self.level == 100:
+            return 0
+        if self.experienceType == 1:
+            return math.floor((4 * (self.level ** 3)) / 5)
+        elif self.experienceType == 3:
+            return math.floor(((6 / 5) * (self.level ** 3)) - (15 * (self.level ** 2)) + (100 * self.level) - 140)
+        elif self.experienceType == 0:
+            return self.level ** 3
+        elif self.experienceType == 2:
+            return 5 * (self.level ** 3) / 4
+        elif self.experienceType == 4:
+            if self.level <= 50:
+                return math.floor((self.level ** 3) * (100 - self.level) / 50)
+            elif self.level <= 68:
+                return math.floor((self.level ** 3) * (150 - self.level) / 100)
+            elif self.level <= 98:
+                return math.floor((self.level ** 3) * math.floor((1911 - 10 * self.level) / 3) / 500)
+            elif self.level <= 100:
+                return math.floor((self.level ** 3) * (160 - self.level) / 100)
