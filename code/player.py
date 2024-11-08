@@ -4,12 +4,15 @@ from entity import Entity
 from keylistener import KeyListener
 from screen import Screen
 from switch import Switch
+from pokemon import Pokemon
 
 
 class Player(Entity):
     def __init__(self, keylistener: KeyListener, screen: Screen, x: int, y: int):
         super().__init__(keylistener, screen, x, y)
         self.pokedollars: int = 0
+        self.pokemons = []
+        self.pokemons.append(Pokemon.createPokemon("Bulbasaur", 5))
 
         self.spritesheet_bike: pygame.image = pygame.image.load("../assets/sprite/hero_01_red_m_cycle_roll.png")
 

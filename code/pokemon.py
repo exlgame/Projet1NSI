@@ -2,15 +2,16 @@ import json
 import math
 import random
 
+from move import Move
+
 
 class Pokemon:
-
     def __init__(self, data, level: int):
         self.klass = data['klass']
         self.id = data['id']
         self.dbSymbol = data['dbSymbol']
         self.forms = data['forms']
-        self.evolutions = data['evolutions']
+        self.evolutions = self.forms[0]['evolutions']
         self.type = self.get_types()
         self.baseHp = self.forms[0]['baseHp']
         self.baseAtk = self.forms[0]['baseAtk']
@@ -58,14 +59,16 @@ class Pokemon:
         self.xp = 0
         self.points_ev = 0
 
+        self.moves: list[Move] = self.setmoves()
         self.status = ""
+
         self.xp_to_next_level = self.xp_to_next_level()
 
-        self.evolutions = None
+        self.evolution = None
 
     def get_types(self):
-        type1 = self.forms['type1']
-        type2 = self.forms['type2']
+        type1 = self.forms[0]['type1']
+        type2 = self.forms[0]['type2']
         if type2 == "__undef__":
             return [type1]
         return [type1, type2]
@@ -85,7 +88,7 @@ class Pokemon:
         iv = self.ivs[stat]
         ev = self.get_ev()[stat]
         level = self.level
-        nature = 1
+        nature = 1.0
         if stat == "hp":
             return math.floor(((2 * base_stat + iv + math.floor(ev / 4)) * level / 100) + level / 10)
         return math.floor((((2 * base_stat + iv + math.floor(ev / 4)) * level / 100) + 5) * nature)
@@ -110,3 +113,38 @@ class Pokemon:
                 return math.floor((self.level ** 3) * math.floor((1911 - 10 * self.level) / 3) / 500)
             elif self.level <= 100:
                 return math.floor((self.level ** 3) * (160 - self.level) / 100)
+
+    def setmoves(self):
+        list_move: list[dict] = []
+        list_attack: list[Move] = []
+        for move in self.moveSet:
+            try:
+                if move['level'] <= self.level:
+                    list_move.append(move)
+            except:
+                pass
+        min = 2
+        if len(list_move) < min:
+            min = len(list_move)
+        max = 4
+        if len(list_move) < 4:
+            max = len(list_move)
+        for i in range(random.randint(min, max)):
+            chosed = random.choice(list_move)
+            list_move.remove(chosed)
+            list_attack.append(Move.createMove(chosed['move']))
+        return list_attack
+
+    def get_ev(self):
+        return {
+            "hp": self.forms[0]["evHp"],
+            "atk": self.forms[0]["evAtk"],
+            "dfe": self.forms[0]["evDfe"],
+            "ats": self.forms[0]["evAts"],
+            "dfs": self.forms[0]["evDfs"],
+            "spd": self.forms[0]["evSpd"]
+        }
+
+    @staticmethod
+    def createPokemon(name: str, level: int) -> "Pokemon":
+        return Pokemon(json.load(open(f"../assets/json/pokemon/{name.lower()}.json")), level)
