@@ -9,6 +9,7 @@ class Controller:
             "right": pygame.K_d,
             "action": pygame.K_e,
             "bike": pygame.K_b,
+            "quit": pygame.K_ESCAPE,
         }
 
     def get_key(self, key: str):

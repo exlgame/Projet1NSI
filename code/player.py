@@ -88,10 +88,12 @@ class Player(Entity):
         return False
 
     def check_input(self):
-        if self.keylistener.key_pressed(pygame.K_b):
+        if self.keylistener.key_pressed(self.controller.get_key("bike")):
             self.switch_bike()
-        if self.keylistener.key_pressed(pygame.K_ESCAPE):
+        if self.keylistener.key_pressed(self.controller.get_key("quit")):
             self.menu_option = True
+            self.keylistener.remove_key(self.controller.get_key("quit"))
+            return
 
     def switch_bike(self, deactive=False):
         if self.speed == 1 and not deactive:

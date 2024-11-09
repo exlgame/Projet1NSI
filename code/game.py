@@ -17,12 +17,12 @@ class Game:
         self.player: Player = Player(self.screen, self.controller, 512, 288, self.keylistener)
         self.map.add_player(self.player)
         self.save = Save("save_0", self.map)
-        self.option = Option(self.screen, self.controller,self.map, "fr",self.save)
+        self.option = Option(self.screen, self.controller,self.map, "fr",self.save,self.keylistener)
 
     def run(self) -> None:
         while self.running:
             self.handle_input()
-            if self.player.menu_option:
+            if not self.player.menu_option:
                 self.map.update()
             else:
                 self.option.update()
