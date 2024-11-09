@@ -3,6 +3,7 @@ import time
 
 import pygame
 import pandas as pd
+from pygame.draw import lines
 
 from player import Player
 from screen import Screen
@@ -115,7 +116,7 @@ class DialogueScreen:
         self.lines_offset = [0 for _ in range(len(self.lines))]
 
         self.y_offset = 0
-        self.line_wait = {}
+        self.line_waits = {}
 
     def update(self):
         wait_time = self.speed * (1/60)
@@ -129,4 +130,22 @@ class DialogueScreen:
             if wait_match:
                 match = re.finditer(r'\[WAIT (\d+)]', line)
                 for m in match:
-                    self.line_wait[m.start()] = int(m.group(1))/60
+                    self.line_waits[m.start()] = int(m.group(1))/60
+                line = re.sub(r'\[WAIT (\d+)]', '', line)
+                self.lines[index] = line
+
+            if self.line_waits.__contains__(self.lines_offset[index]):
+                wait_time = self.line_waits[self.lines_offset[index]]
+
+            if time.time() - self.time_wait > wait_time and self.lines_offset[index] < len(line):
+                self.time_wait = time.time()
+                self.lines_offset[index] += 1
+
+                if 2 <= self.lines_index < len(self.lines) - 1 and len(line) - 32 <= self.lines_offset[index]:
+                    self.y_offset += 1
+                if self.lines_offset[index] == len(line):
+                    self.lines_index += 1
+            text = line[:self.lines_offset[index]]
+
+            text_surface = self.font.render(text, True, (225, 225, 225)).convert_alpha()
+            self.surface.blit(text_surface, (124,12))
