@@ -90,5 +90,5 @@ class Map:
         with open(f"../assets/saves/{path}/maps/{self.current_map.name}", "w") as file:
             json.dump(self.tmx_data.tiledgidmap, file)
         for i, layer in enumerate(self.tmx_data.visible_layers):
-            with open(f"../assets/saves/{path}/maps/{self.current_map.name}/layer{i}.tmx", "w") as file:
-                json.dump(layer.date, file)
+            with open(f"../assets/saves/{path}/maps/{self.current_map.name}/layer{i}", "w") as file:
+                json.dump(layer.data, file)

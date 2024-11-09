@@ -1,16 +1,18 @@
-import pygame
 import datetime
 
-from keylistener import KeyListener
+import pygame
+
 from entity import Entity
 from controller import Controller
 from screen import Screen
 from switch import Switch
 from pokemon import Pokemon
+from keylistener import KeyListener
 
 
 class Player(Entity):
-    def __init__(self, screen: Screen, controller : Controller, x: int, y: int,keylistener: KeyListener, ingame_time: datetime.timedelta = datetime.timedelta(seconds=0)) -> None:
+    def __init__(self, screen: Screen, controller: Controller, x: int, y: int, keylistener: KeyListener,
+                 ingame_time: datetime.timedelta = datetime.timedelta(seconds=0)) -> None:
         super().__init__(screen, x, y)
         self.keylistener = keylistener
         self.name = "Lucas"
@@ -106,4 +108,4 @@ class Player(Entity):
 
     def update_ingame_time(self):
         if self.screen.get_delta_time() > 0:
-            self.ingame_time += datetime.timedelta(seconds=self.screen.get_delta_time()/1000)
+            self.ingame_time += datetime.timedelta(seconds=self.screen.get_delta_time() / 1000)

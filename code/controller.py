@@ -1,5 +1,6 @@
 import pygame
 
+
 class Controller:
     def __init__(self):
         self.keys = {
@@ -14,5 +15,6 @@ class Controller:
 
     def get_key(self, key: str):
         return self.keys[key]
+
     def add_key(self, key: str, value: int):
         self.keys[key] = value

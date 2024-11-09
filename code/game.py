@@ -1,4 +1,5 @@
 import pygame
+
 from keylistener import KeyListener
 from map import Map
 from player import Player
@@ -6,18 +7,19 @@ from screen import Screen
 from controller import Controller
 from option import Option
 from save import Save
+
+
 class Game:
-    def __init__(self):
+    def __init__(self) -> None:
         self.running: bool = True
         self.screen: Screen = Screen()
         self.controller = Controller()
         self.map: Map = Map(self.screen, self.controller)
         self.keylistener: KeyListener = KeyListener()
-        self.controller = Controller()
         self.player: Player = Player(self.screen, self.controller, 512, 288, self.keylistener)
         self.map.add_player(self.player)
         self.save = Save("save_0", self.map)
-        self.option = Option(self.screen, self.controller,self.map, "fr",self.save,self.keylistener)
+        self.option = Option(self.screen, self.controller, self.map, "fr", self.save, self.keylistener)
 
     def run(self) -> None:
         while self.running:

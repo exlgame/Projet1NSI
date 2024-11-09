@@ -2,34 +2,33 @@ import json
 import datetime
 import pathlib
 
-from pygame.examples.multiplayer_joystick import player
-
 from map import Map
 from player import Player
 from sql import SQL
 
+
 class Save:
-    def __init__(self, path:str, map: Map):
+    def __init__(self, path: str, map: Map):
         self.path = path
         self.map = map
         self.sql = SQL()
 
     def save(self):
         self.map.save_in_file(self.path)
-        positon = self.map.player.position
-        player_info = self.map.player.position
+        position = self.map.player.position
         player_info = {
-            "name": self.map.player.direction,
-            #"type": self.map.player.type,
+            "name": self.map.player.name,
+            # "type": self.map.player.type,
             "position": {
-                "x": positon[0],
-                "y": positon[1]
+                "x": position[0],
+                "y": position[1]
             },
+            "direction": self.map.player.direction,
             "pokemon": self.map.player.pokemons,
             "inventory": self.map.player.inventory,
             "pokedex": self.map.player.pokedex,
             "pokedollars": self.map.player.pokedollars,
-            "ingame_time": self.map.player.ingame_time.seconds,
+            "ingame_time": self.map.player.ingame_time.seconds
         }
         map_info = {
             "path": self.map.current_map.name,
