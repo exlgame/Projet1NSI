@@ -157,10 +157,10 @@
  </layer>
  <group id="10" name="object">
   <objectgroup id="9" name="interface" opacity="0.9">
-   <object id="32" name="spawn map_0 0" x="80" y="160">
+   <object id="32" name="spawn map_0 1" x="80" y="160">
     <point/>
    </object>
-   <object id="57" name="switch map_0 0" x="80" y="160" width="16" height="16"/>
+   <object id="57" name="switch map_0 1" x="80" y="160" width="16" height="16"/>
   </objectgroup>
   <objectgroup id="11" name="collisions">
    <object id="48" name="collision" x="0" y="160" width="80" height="16"/>
@@ -195,7 +195,7 @@
    <object id="87" name="collision" x="160" y="176" width="48" height="16"/>
    <object id="88" name="collision" x="0" y="144" width="16" height="16"/>
    <object id="89" name="collision" x="16" y="32" width="32" height="16"/>
-   <object id="90" x="64" y="32" width="32" height="16"/>
+   <object id="90" name="collision" x="64" y="32" width="32" height="16"/>
    <object id="92" name="collision" x="48" y="32" width="48" height="16"/>
   </objectgroup>
  </group>
