@@ -653,8 +653,8 @@
  <group id="2" name="Objet">
   <objectgroup id="3" name="collision"/>
   <objectgroup id="4" name="interface">
-   <object id="1" name="switch map_0 0" x="368" y="-15" width="48" height="14"/>
-   <object id="2" name="spawn map_0 0" x="399.5" y="15.5">
+   <object id="1" name="switch map_0 0" x="368" y="0" width="48" height="14"/>
+   <object id="2" name="spawn map_0 0" x="400" y="16">
     <point/>
    </object>
   </objectgroup>
