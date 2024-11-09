@@ -100,3 +100,33 @@ class DialogueScreen:
         self.screen: screen = Screen
         self.dialogue_data: DialogueData = dialogue_data
         self.speed: int = 1
+
+        self.font: pygame.font.Font = pygame.font.Font("../assets/fonts/OakSans-Regular.ttf", 22)
+        self.surface: pygame.Surface = pygame.Surface((1280, 131), pygame.SRCALPHA)
+        self.background = pygame.image.load("../assets/interfaces/dialogues/message_box_0.png").convert_alpha()
+        self.background_name = pygame.image.load("../assets/interfaces/dialogues/name_box_0.png").convert_alpha()
+
+        self.speaker_name = self.font.render(self.dialogue_data.speaker_name,True,(225, 225, 225))
+
+        self.time_wait = time.time()
+        self.lines = self.dialogue_data.text.split("\n")
+
+        self.lines_index = 0
+        self.lines_offset = [0 for _ in range(len(self.lines))]
+
+        self.y_offset = 0
+        self.line_wait = {}
+
+    def update(self):
+        wait_time = self.speed * (1/60)
+        self.surface.fill((0, 0, 0, 0))
+        self.surface.blit(self.background, (0,0))
+
+        for index, line in enumerate(self.lines):
+            if index > self.lines_index:
+                break
+            wait_match = re.search(r'\[WAIT (\d+)]', line)
+            if wait_match:
+                match = re.finditer(r'\[WAIT (\d+)]', line)
+                for m in match:
+                    self.line_wait[m.start()] = int(m.group(1))/60
