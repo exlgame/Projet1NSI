@@ -8,6 +8,7 @@ class Screen:
         self.clock: pygame.time.Clock = pygame.time.Clock()
         self.framerate: int = 144
         self.deltatime: float = 0.0
+        self.imagescreen = pygame.display.get_surface()
 
     def update(self) -> None:
         pygame.display.flip()
@@ -24,3 +25,6 @@ class Screen:
 
     def get_display(self) -> pygame.display:
         return self.display
+
+    def image_screen(self):
+        return self.imagescreen.copy()

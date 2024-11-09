@@ -3,21 +3,29 @@ from keylistener import KeyListener
 from map import Map
 from player import Player
 from screen import Screen
-
-
+from controller import Controller
+from option import Option
+from save import Save
 class Game:
     def __init__(self):
         self.running: bool = True
         self.screen: Screen = Screen()
-        self.map: Map = Map(self.screen)
+        self.controller = Controller()
+        self.map: Map = Map(self.screen, self.controller)
         self.keylistener: KeyListener = KeyListener()
-        self.player: Player = Player(self.keylistener, self.screen, 512, 288)
+        self.controller = Controller()
+        self.player: Player = Player(self.screen, self.controller, 512, 288, self.keylistener)
         self.map.add_player(self.player)
+        self.save = Save("save_0", self.map)
+        self.option = Option(self.screen, self.controller,self.map, "fr",self.save)
 
     def run(self) -> None:
         while self.running:
             self.handle_input()
-            self.map.update()
+            if self.player.menu_option:
+                self.map.update()
+            else:
+                self.option.update()
             self.screen.update()
 
     def handle_input(self) -> None:

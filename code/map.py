@@ -83,3 +83,12 @@ class Map:
     def pose_player(self, switch: Switch) -> None:
         position = self.tmx_data.get_object_by_name("spawn " + self.current_map.name + " " + str(switch.port))
         self.player.position = pygame.math.Vector2(position.x, position.y)
+
+    def save_in_file(self, path: str):
+        if not pathlib.Path(f"../assets/saves/{path}/maps/{self.current_map.name}").exists():
+            os.makedirs(f"../assets/saves/{path}/maps/{self.current_map.name}")
+        with open(f"../assets/saves/{path}/maps/{self.current_map.name}", "w") as file:
+            json.dump(self.tmx_data.tiledgidmap, file)
+        for i, layer in enumerate(self.tmx_data.visible_layers):
+            with open(f"../assets/saves/{path}/maps/{self.current_map.name}/layer{i}.tmx", "w") as file:
+                json.dump(layer.date, file)
