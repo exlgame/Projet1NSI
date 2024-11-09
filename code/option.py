@@ -13,4 +13,8 @@ from save import Save
 class Option:
 
     def __init__(self, screen: Screen, controller: Controller, map: Map, language: str, save: Save):
-        pass
+        self.screen = screen
+        self.controller = controller
+        self.map = map
+        self.language = language
+        self.save = save

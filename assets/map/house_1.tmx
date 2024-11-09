@@ -157,7 +157,7 @@
  </layer>
  <group id="10" name="object">
   <objectgroup id="9" name="interface" opacity="0.9">
-   <object id="32" name="spawn map_0 0" x="80" y="144">
+   <object id="32" name="spawn map_0 0" x="80" y="160">
     <point/>
    </object>
    <object id="57" name="switch map_0 0" x="80" y="160" width="16" height="16"/>

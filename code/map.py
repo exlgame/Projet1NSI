@@ -1,3 +1,7 @@
+import json
+import os
+import pathlib
+
 import pygame
 import pyscroll
 import pytmx
@@ -5,10 +9,12 @@ import pytmx
 from player import Player
 from screen import Screen
 from switch import Switch
+from controller import Controller
 
 
 class Map:
-    def __init__(self, screen: Screen):
+    def __init__(self, screen: Screen, controller: Controller):
+        self.controller = controller
         self.screen: Screen = screen
         self.tmx_data: pytmx.TiledMap | None = None
         self.map_layer: pyscroll.BufferedRenderer | None = None
@@ -74,6 +80,6 @@ class Map:
         self.group.center(self.player.rect.center)
         self.group.draw(self.screen.get_display())
 
-    def pose_player(self, switch: Switch):
+    def pose_player(self, switch: Switch) -> None:
         position = self.tmx_data.get_object_by_name("spawn " + self.current_map.name + " " + str(switch.port))
         self.player.position = pygame.math.Vector2(position.x, position.y)
