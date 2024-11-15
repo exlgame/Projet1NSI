@@ -143,26 +143,6 @@
     <point/>
    </object>
   </objectgroup>
-  <objectgroup id="11" name="collisions">
-   <object id="33" name="collision" x="111.94" y="159.674" width="3.34981" height="79.558"/>
-   <object id="34" name="collision" x="116.685" y="235.324"/>
-   <object id="35" name="collision" x="124.501" y="236.72" width="115.568" height="3.62896"/>
-   <object id="36" name="collision" x="159.953" y="218.296" width="47.7348" height="19.2614"/>
-   <object id="37" name="collision" x="235.883" y="235.045"/>
-   <object id="38" name="collision" x="192.335" y="97.1445" width="31.8232" height="46.6182"/>
-   <object id="39" name="collision" x="128.689" y="80.9538" width="47.7348" height="47.1765"/>
-   <object id="41" name="collision" x="-1.95406" y="156.045" width="82.0704" height="6.14132"/>
-   <object id="42" name="collision" x="3.90811" y="156.604"/>
-   <object id="43" name="collision" x="-0.558302" y="-4.74557" width="5.30387" height="164.141"/>
-   <object id="44" name="collision" x="17.0282" y="73.6958" width="46.8974" height="20.6572"/>
-   <object id="45" name="collision" x="16.7491" y="13.9575" width="31.5441" height="32.6607"/>
-   <object id="46" name="collision" x="-0.279151" y="-2.23321" width="252.632" height="33.219"/>
-   <object id="47" name="collision" x="51.3638" y="32.3815" width="9.49113" height="13.6784"/>
-   <object id="48" name="collision" x="64.763" y="18.424" width="142.367" height="23.4487"/>
-   <object id="49" name="collision" x="96.5862" y="38.2437" width="111.94" height="9.77028"/>
-   <object id="50" name="collision" x="128.409" y="47.1765" width="46.8974" height="12.2826"/>
-   <object id="51" name="collision" x="231.416" y="30.7066"/>
-   <object id="52" name="collision" x="160.791" y="168.886" width="46.6182" height="23.1695"/>
-  </objectgroup>
+  <objectgroup id="11" name="collisions"/>
  </group>
 </map>
