@@ -2,7 +2,7 @@ import sqlite3
 
 class SQL:
     def __init__(self):
-        self.connection = sqlite3.connect('..//assets/json/base.db')
+        self.connection = sqlite3.connect('../assets/json/base.db')
         self.cursor = self.connection.cursor()
 
     def get_connection(self):

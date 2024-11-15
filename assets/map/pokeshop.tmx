@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="22">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="38">
  <tileset firstgid="1" source="tileset/interieur1.tsx"/>
  <tileset firstgid="4625" source="tileset/pokemon-center.tsx"/>
  <layer id="1" name="Calque de Tuiles 1" width="10" height="10">
@@ -17,8 +17,28 @@
 </data>
  </layer>
  <group id="8" name="objet">
-  <objectgroup id="9" name="collision"/>
-  <objectgroup id="10" name="interafce"/>
+  <objectgroup id="9" name="collision">
+   <object id="24" name="collision" x="-4.18182" y="158.727" width="47.6364" height="2.90909"/>
+   <object id="25" name="collision" x="-4.18182" y="13.4545" width="4.90909" height="147.818"/>
+   <object id="26" name="collision" x="0.181818" y="-0.909091" width="64.3636" height="78.9091"/>
+   <object id="27" name="collision" x="69.6364" y="158.727" width="92.1818" height="6.90909"/>
+   <object id="28" name="collision" x="158.909" y="-3.63636" width="2.90909" height="163.818"/>
+   <object id="29" name="collision" x="143.455" y="110.909" width="15.4545" height="32.9091"/>
+   <object id="30" name="collision" x="96.1818" y="112.727" width="30.5455" height="31.4545"/>
+   <object id="31" name="collision" x="70.1818" y="37.2727"/>
+   <object id="32" name="collision" x="63.6364" y="-4.18182" width="90.9091" height="36"/>
+   <object id="33" name="collision" x="96.7273" y="37.0909" width="31.0909" height="42.5455"/>
+   <object id="34" name="collision" x="144.364" y="48.5455" width="16" height="31.8182"/>
+   <object id="35" name="collision" x="142.909" y="29.6364" width="18.1818" height="4.72727"/>
+   <object id="36" name="collision" x="147.636" y="34.3636" width="14.5455" height="5.45455"/>
+   <object id="37" name="collision" x="152.182" y="39.0909" width="11.0909" height="7.45455"/>
+  </objectgroup>
+  <objectgroup id="10" name="interafce">
+   <object id="22" name="spawn map_0 0" x="67.0909" y="143.455">
+    <point/>
+   </object>
+   <object id="23" name="switch map_0 0" x="43.2727" y="156.364" width="25.6364" height="11.0909"/>
+  </objectgroup>
  </group>
  <layer id="2" name="mur" width="10" height="10">
   <data encoding="csv">
