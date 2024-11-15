@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="105" height="60" tilewidth="16" tileheight="16" infinite="0" nextlayerid="30" nextobjectid="712">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="105" height="60" tilewidth="16" tileheight="16" infinite="0" nextlayerid="30" nextobjectid="688">
  <tileset firstgid="1" source="tileset/tileset_pokemon_sdk.tsx"/>
  <tileset firstgid="4257" source="tileset/tileset4g.tsx"/>
  <group id="13" name="layer0">
@@ -825,28 +825,6 @@
    <object id="685" x="607.333" y="894.667" width="32.6667" height="16"/>
    <object id="686" x="606.667" y="909.333" width="17.3333" height="52"/>
    <object id="687" x="352" y="734" width="16" height="18"/>
-   <object id="688" name="collision" x="461.333" y="672" width="36.6667" height="19.3333"/>
-   <object id="689" name="collision" x="448.667" y="686.667" width="18" height="23.3333"/>
-   <object id="690" name="collision" x="366.667" y="702.667" width="83.3333" height="45.3333"/>
-   <object id="691" name="collision" x="430" y="733.333" width="66" height="18.6667"/>
-   <object id="692" name="collision" x="422.667" y="756"/>
-   <object id="693" name="collision" x="401.333" y="756" width="14.6667" height="207.333"/>
-   <object id="694" name="collision" x="416.667" y="785.333" width="14.6667" height="144.667"/>
-   <object id="695" name="collision" x="433.333" y="798.667" width="14.6667" height="96"/>
-   <object id="696" name="collision" x="544.667" y="703.333" width="109.333" height="48"/>
-   <object id="697" name="collision" x="562.667" y="669.333" width="13.3333" height="26"/>
-   <object id="698" name="collision" x="581.333" y="700"/>
-   <object id="699" name="collision" x="624.667" y="690" width="62.6667" height="30.6667"/>
-   <object id="700" name="collision" x="577.333" y="431.333" width="78.6667" height="27.3333"/>
-   <object id="701" name="collision" x="658" y="449.333" width="67.3333" height="12.6667"/>
-   <object id="702" name="collision" x="722" y="432" width="44.6667" height="26.6667"/>
-   <object id="703" name="collision" x="768" y="448.667" width="29.3333" height="110.667"/>
-   <object id="704" name="collision" x="793.333" y="479.333" width="22.6667" height="50.6667"/>
-   <object id="705" name="collision" x="577.333" y="559.333" width="190.667" height="32.6667"/>
-   <object id="706" name="collision" x="638.667" y="588.667" width="97.3333" height="18.6667"/>
-   <object id="707" name="collision" x="659.333" y="673.333" width="56" height="17.3333"/>
-   <object id="708" name="collision" x="674" y="606.667" width="61.3333" height="19.3333"/>
-   <object id="709" name="collision" x="688.667" y="626.667" width="46.6667" height="46"/>
   </objectgroup>
   <objectgroup id="22" name="interface">
    <object id="311" name="switch house_0 0" x="512" y="256" width="16" height="16"/>
@@ -861,10 +839,6 @@
    <object id="680" name="spawn map_2 0" x="520.5" y="941">
     <point/>
    </object>
-   <object id="710" name="spawn pokeshop" x="494" y="439.333">
-    <point/>
-   </object>
-   <object id="711" name="switch pokeshop" x="479" y="414.667" width="18" height="17.3333"/>
   </objectgroup>
  </group>
 </map>
