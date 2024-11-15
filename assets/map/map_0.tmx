@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="105" height="60" tilewidth="16" tileheight="16" infinite="0" nextlayerid="30" nextobjectid="715">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="105" height="60" tilewidth="16" tileheight="16" infinite="0" nextlayerid="30" nextobjectid="716">
  <tileset firstgid="1" source="tileset/tileset_pokemon_sdk.tsx"/>
  <tileset firstgid="4257" source="tileset/tileset4g.tsx"/>
  <group id="13" name="layer0">
@@ -665,10 +665,10 @@
     <point/>
    </object>
    <object id="711" name="switch pokeshop" x="479" y="414.667" width="18" height="17.3333"/>
-   <object id="712" name="spawn labo_0 0" x="255" y="444.333">
+   <object id="714" name="switch labo_0" x="240" y="416" width="16" height="16"/>
+   <object id="715" name="spawn labo_0" x="256" y="448">
     <point/>
    </object>
-   <object id="714" name="switch labo_0" x="240" y="416" width="16" height="16"/>
   </objectgroup>
  </group>
 </map>
