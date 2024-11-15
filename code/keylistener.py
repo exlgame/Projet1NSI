@@ -1,5 +1,5 @@
 class KeyListener:
-    def __init__(self):
+    def __init__(self) -> None:
         self.keys: list[int] = []
 
     def add_key(self, key: int) -> None:
