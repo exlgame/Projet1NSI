@@ -403,7 +403,6 @@
    <object id="86" name="spawn inter_0 0" x="336.25" y="288">
     <point/>
    </object>
-   <object id="87" x="154.333" y="199.667" height="2"/>
   </objectgroup>
   <objectgroup id="30" name="collisions">
    <object id="107" name="collision" x="320" y="416" width="96" height="16"/>

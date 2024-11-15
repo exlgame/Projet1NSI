@@ -924,8 +924,8 @@
    <object id="115" name="collision" x="609.333" y="128" width="27.3333" height="13.3333"/>
   </objectgroup>
   <objectgroup id="4" name="interface">
-   <object id="1" name="switch map_0 0" x="368" y="-15" width="48" height="14"/>
-   <object id="2" name="spawn map_0 0" x="399.5" y="15.5">
+   <object id="1" name="switch map_0 0" x="368" y="0" width="48" height="14"/>
+   <object id="2" name="spawn map_0 0" x="400" y="16">
     <point/>
    </object>
    <object id="107" name="spawn pokecenter" x="576.667" y="120">
