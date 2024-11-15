@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="15" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="13" nextobjectid="93">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="15" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="12" nextobjectid="53">
  <tileset firstgid="1" source="tileset/tileset4g.tsx"/>
  <tileset firstgid="21001" source="tileset/interieur1.tsx"/>
  <tileset firstgid="25625" source="tileset/indoor.tsx"/>
@@ -41,7 +41,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="4" name="kitchen" width="15" height="15">
+ <layer id="4" name="Calque de Tuiles 3" width="15" height="15">
   <data encoding="csv">
 0,0,0,0,24084,24085,24206,24206,0,28642,24898,0,0,0,0,
 0,24100,24101,0,29212,29213,24214,24214,28649,28650,28651,21143,21144,0,30041,
@@ -53,10 +53,10 @@
 0,0,0,0,0,0,0,0,0,0,0,0,21847,21848,0,
 0,0,0,0,0,0,0,0,0,0,0,0,21855,21856,0,
 24251,0,0,0,0,22183,22184,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,29177,29178,29179,0,0,
 0,0,0,0,0,0,0,0,0,0,29185,29186,29187,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,29598,29599,29600,0,0,
 0,0,0,0,0,0,0,24251,0,29895,29606,29607,29608,0,24251
 </data>
  </layer>
@@ -117,26 +117,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="12" name="player" width="15" height="15">
-  <data encoding="csv">
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-</data>
- </layer>
- <layer id="8" name="top" width="15" height="15">
+ <layer id="8" name="Calque de Tuiles 7" width="15" height="15">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -148,55 +129,40 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 24243,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,29177,29178,29179,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,24243,0,0,29598,29599,29600,0,24243,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,24243,0,0,0,0,0,0,24243,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
  <group id="10" name="object">
   <objectgroup id="9" name="interface" opacity="0.9">
-   <object id="32" name="spawn map_0 0" x="80" y="144">
+   <object id="31" name="switch map_0 1" x="80" y="160" width="31.3539" height="16.6656"/>
+   <object id="32" name="spawn map_0 1" x="80" y="144">
     <point/>
    </object>
-   <object id="57" name="switch map_0 0" x="80" y="160" width="16" height="16"/>
   </objectgroup>
   <objectgroup id="11" name="collisions">
-   <object id="48" name="collision" x="0" y="160" width="80" height="16"/>
-   <object id="49" name="collision" x="96" y="176" width="16" height="64"/>
-   <object id="50" name="collision" x="112" y="240" width="128" height="16"/>
-   <object id="51" name="collision" x="240" y="32" width="16" height="208"/>
-   <object id="52" name="collision" x="0" y="16" width="240" height="16"/>
-   <object id="53" name="collision" x="-16" y="32" width="16" height="128"/>
-   <object id="59" name="collision" x="96" y="32" width="32" height="16"/>
-   <object id="60" name="collision" x="128" y="32" width="48" height="32"/>
-   <object id="61" name="collision" x="176" y="32" width="32" height="16"/>
-   <object id="62" name="collision" x="176" y="96" width="16" height="16"/>
-   <object id="63" name="collision" x="160" y="128" width="16" height="16"/>
-   <object id="64" name="collision" x="144" y="128" width="16" height="16"/>
-   <object id="65" name="collision" x="112" y="112" width="16" height="16"/>
-   <object id="66" name="collision" x="112" y="96" width="16" height="16"/>
-   <object id="67" name="collision" x="128" y="64" width="16" height="16"/>
-   <object id="68" name="collision" x="160" y="64" width="16" height="16"/>
-   <object id="69" name="collision" x="128" y="80" width="48" height="48"/>
-   <object id="70" name="collision" x="48" y="96" width="16" height="16"/>
-   <object id="71" name="collision" x="32" y="96" width="16" height="16"/>
-   <object id="72" name="collision" x="16" y="96" width="16" height="16"/>
-   <object id="73" name="collision" x="0" y="80" width="16" height="16"/>
-   <object id="74" name="collision" x="16" y="64" width="48" height="16"/>
-   <object id="75" name="collision" x="16" y="80" width="48" height="16"/>
-   <object id="79" name="collision" x="192" y="112" width="32" height="32"/>
-   <object id="80" name="collision" x="192" y="96" width="32" height="16"/>
-   <object id="81" name="collision" x="224" y="32" width="16" height="16"/>
-   <object id="83" name="collision" x="224" y="224" width="16" height="16"/>
-   <object id="84" name="collision" x="112" y="224" width="16" height="16"/>
-   <object id="85" name="collision" x="160" y="224" width="48" height="16"/>
-   <object id="87" name="collision" x="160" y="176" width="48" height="16"/>
-   <object id="88" name="collision" x="0" y="144" width="16" height="16"/>
-   <object id="89" name="collision" x="16" y="32" width="32" height="16"/>
-   <object id="90" x="64" y="32" width="32" height="16"/>
-   <object id="92" name="collision" x="48" y="32" width="48" height="16"/>
+   <object id="33" name="collision" x="111.94" y="159.674" width="3.34981" height="79.558"/>
+   <object id="34" name="collision" x="116.685" y="235.324"/>
+   <object id="35" name="collision" x="124.501" y="236.72" width="115.568" height="3.62896"/>
+   <object id="36" name="collision" x="159.953" y="218.296" width="47.7348" height="19.2614"/>
+   <object id="37" name="collision" x="235.883" y="235.045"/>
+   <object id="38" name="collision" x="192.335" y="97.1445" width="31.8232" height="46.6182"/>
+   <object id="39" name="collision" x="128.689" y="80.9538" width="47.7348" height="47.1765"/>
+   <object id="41" name="collision" x="-1.95406" y="156.045" width="82.0704" height="6.14132"/>
+   <object id="42" name="collision" x="3.90811" y="156.604"/>
+   <object id="43" name="collision" x="-0.558302" y="-4.74557" width="5.30387" height="164.141"/>
+   <object id="44" name="collision" x="17.0282" y="73.6958" width="46.8974" height="20.6572"/>
+   <object id="45" name="collision" x="16.7491" y="13.9575" width="31.5441" height="32.6607"/>
+   <object id="46" name="collision" x="-0.279151" y="-2.23321" width="252.632" height="33.219"/>
+   <object id="47" name="collision" x="51.3638" y="32.3815" width="9.49113" height="13.6784"/>
+   <object id="48" name="collision" x="64.763" y="18.424" width="142.367" height="23.4487"/>
+   <object id="49" name="collision" x="96.5862" y="38.2437" width="111.94" height="9.77028"/>
+   <object id="50" name="collision" x="128.409" y="47.1765" width="46.8974" height="12.2826"/>
+   <object id="51" name="collision" x="231.416" y="30.7066"/>
+   <object id="52" name="collision" x="160.791" y="168.886" width="46.6182" height="23.1695"/>
   </objectgroup>
  </group>
 </map>
