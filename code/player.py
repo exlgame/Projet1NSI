@@ -36,8 +36,9 @@ class Player(Entity):
 
     def update(self) -> None:
         self.update_ingame_time()
+        if self.can_move:
+            self.check_move()
         self.check_input()
-        self.check_move()
         super().update()
 
     def check_move(self) -> None:
