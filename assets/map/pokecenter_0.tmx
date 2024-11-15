@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="16" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="14" nextobjectid="69">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="16" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="14" nextobjectid="64">
  <tileset firstgid="1" source="tileset/pokemon-center.tsx"/>
  <layer id="9" name="Calque de Tuiles 7" width="16" height="20">
   <data encoding="csv">
@@ -171,10 +171,10 @@
  </layer>
  <group id="11" name="objet">
   <objectgroup id="13" name="interface">
-   <object id="65" name="spawn map_2 0" x="128" y="304">
+   <object id="37" name="spawn map_2 0" x="131.387" y="302.227">
     <point/>
    </object>
-   <object id="68" name="switch map_2 0" x="112" y="304" width="16" height="16"/>
+   <object id="39" name="switch map_2 0" x="106.45" y="318.232" width="26.4263" height="11.166"/>
   </objectgroup>
   <objectgroup id="12" name="collision"/>
  </group>
