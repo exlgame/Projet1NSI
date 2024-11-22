@@ -178,6 +178,39 @@ class Pokemon:
             "spd": self.forms[0]["evSpd"]
         }
 
+    def to_dict(self):
+        return {
+            "klass": self.klass,
+            'id': self.id,
+            'dbSymbol': self.dbSymbol,
+            'forms': self.forms,
+            'type': self.type,
+            'level': self.level,
+            'gender': self.gender,
+            'ivs': self.ivs,
+            'base_stats': self.base_stats,
+            'maxhp': self.maxhp,
+            'hp': self.hp,
+            'atk': self.atk,
+            'dfe': self.dfe,
+            'ats': self.ats,
+            'dfs': self.dfs,
+            'spd': self.spd,
+            'shiny': self.shiny,
+            'xp': self.xp,
+            'points_ev': self.points_ev,
+            'moves': [move.to_dict() for move in self.moves],
+            'status': self.status,
+            'xp_to_next_level': self.xp_to_next_level,
+            'evolution': self.evolution
+        }
+
+    @staticmethod
+    def from_dict(data: dict):
+        pokemon = Pokemon.__new__(Pokemon)
+        pokemon.__dict__.update(data)
+
+
     @staticmethod
     def create_pokemon(name: str, level: int) -> "Pokemon":
         """

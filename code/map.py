@@ -187,3 +187,6 @@ class Map:
         else:
             self.animation_change_map_active = False
             self.animation_change_map = 0
+
+    def load_map(self, map: str) -> None:
+        self.switch_map(Switch("switch", map, pygame.rect.Rect(0, 0, 0, 0), 0))

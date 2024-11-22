@@ -8,7 +8,8 @@ class Entity(pygame.sprite.Sprite):
     """
     Entity class to manage the entities
     """
-    def __init__(self, screen: Screen, x: int, y: int):
+
+    def __init__(self, screen: Screen, x: int, y: int, spritesheet: str) -> None:
         """
         Initialize the entity
         :param screen:
@@ -17,7 +18,7 @@ class Entity(pygame.sprite.Sprite):
         """
         super().__init__()
         self.screen: Screen = screen
-        self.spritesheet: pygame.image = pygame.image.load("../assets/sprite/hero_01_red_m_walk.png")
+        self.spritesheet: pygame.image = pygame.image.load(f"../assets/sprite/{spritesheet}_walk.png")
         self.image: pygame.image = Tool.split_image(self.spritesheet, 0, 0, 24, 32)
         self.position: pygame.math.Vector2 = pygame.math.Vector2(x, y)
         self.rect: pygame.Rect = self.image.get_rect()
@@ -123,6 +124,8 @@ class Entity(pygame.sprite.Sprite):
         Align the hitbox with map grid (16x16)
         :return:
         """
+        if self.is_aligned():
+            return
         self.position.x += 16
         self.rect.center = self.position
         self.hitbox.midbottom = self.rect.midbottom
@@ -133,6 +136,9 @@ class Entity(pygame.sprite.Sprite):
             self.rect.y -= 1
             self.hitbox.midbottom = self.rect.midbottom
         self.position = pygame.math.Vector2(self.rect.center)
+
+    def is_aligned(self):
+        return self.hitbox.x % 16 == 0 and self.hitbox.y % 16 == 0
 
     def get_all_images(self, spritesheet: pygame.image) -> dict[str, list[pygame.image]]:
         """
@@ -154,3 +160,8 @@ class Entity(pygame.sprite.Sprite):
             for j, key in enumerate(all_images.keys()):
                 all_images[key].append(Tool.split_image(spritesheet, i * width, j * height, 24, 32))
         return all_images
+
+    def set_position(self, x: int, y: int):
+        self.position = pygame.math.Vector2(x, y)
+        self.rect.center = self.position
+        self.hitbox.midbottom = self.rect.midbottom

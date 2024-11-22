@@ -1,17 +1,19 @@
-import datetime
+import os
 import json
 import pathlib
 
 from map import Map
 from player import Player
 from sql import SQL
+from keylistener import KeyListener
+from dialogue import Dialogue
 
 
 class Save:
     """
     Save class to manage the save
     """
-    def __init__(self, path: str, map: Map):
+    def __init__(self, path: str, map: Map, player = Player, keylistener = KeyListener, dialogue = Dialogue):
         """
         Initialize the save
         :param path:
@@ -19,6 +21,9 @@ class Save:
         """
         self.path: str = path
         self.map: Map = map
+        self.player: Player = player
+        self.keylistener: KeyListener = keylistener
+        self.dialogue: Dialogue = dialogue
         self.sql: SQL = SQL()
 
     def save(self) -> None:
@@ -26,17 +31,16 @@ class Save:
         Save the game
         :return:
         """
-        self.map.save_in_file(self.path)
         position = self.map.player.position
         player_info = {
             "name": self.map.player.name,
-            # "type": self.map.player.type,
+            "gender": self.player.gender,
             "position": {
                 "x": position[0],
                 "y": position[1]
             },
             "direction": self.map.player.direction,
-            "pokemon": self.map.player.pokemons,
+            "pokemon": [pokemon.to_dict() for pokemon in self.player.pokemons],
             "inventory": self.map.player.inventory,
             "pokedex": self.map.player.pokedex,
             "pokedollars": self.map.player.pokedollars,
@@ -44,34 +48,36 @@ class Save:
         }
         map_info = {
             "path": self.map.current_map.name,
-            "map_name": self.map.current_map.name
+            "map_name": self.map.map_name
         }
         data = {
             "player": player_info,
             "map": map_info
         }
 
-        with open(f"../assets/{self.path}/data", "w") as file:
+        if not pathlib.Path(f"../assets/saves/{self.path}/data.pkmn").exists():
+            os.makedirs(f"../assets/{self.path}/data")
+            pathlib.Path(f"../assets/saves/{self.path}/data.pkmn").touch()
+
+        with open(f"../assets/saves/{self.path}/data.pkmn", "w") as file:
             file.write(self.dump(data))
+
+        self.dialogue.load_data(100, 0)
 
     def load(self) -> None:
         """
         Load the game from the save
         :return:
         """
-        if pathlib.Path(f"../assets/{self.path}/data").exists():
-            with open(f"../assets/{self.path}/data", "r") as file:
+        if pathlib.Path(f"../assets/saves/{self.path}/data.pkmn").exists():
+            with open(f"../assets/saves/{self.path}/data.pkmn", "r") as file:
                 data = json.load(file)
-            self.map.path_name = data["map"]["name"]
-            self.map.current_map = data["map"]["map_name"]
-            self.map.player = Player(self.map.screen, self.map.controller, data["player"]["name"],
-                                     data["player"]["position"]["x"], data["player"]["position"]["y"],
-                                     datetime.timedelta(seconds=data["player"]["ingame_time"]))
-            self.map.player.direction = data["player"]["direction"]
-            self.map.player.pokemons = data["player"]["pokemon"]
-            self.map.player.inventory = data["player"]["inventory"]
-            self.map.player.pokedex = data["player"]["pokedex"]
-            self.map.player.pokedollars = data["player"]["pokedollars"]
+            self.map.load_map(data["map"]["path"])
+            self.player.from_dict(data["player"])
+        else:
+            self.map.load_map("map_0")
+            self.player.set_position(512, 288)
+        self.map.add_player(self.player)
 
     def dump(self, element: dict) -> str:
         """
