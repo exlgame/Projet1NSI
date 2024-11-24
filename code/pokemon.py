@@ -179,8 +179,12 @@ class Pokemon:
         }
 
     def to_dict(self):
+        """
+        Convertir l'objet Pokémon en dictionnaire sérialisable.
+        :return: dict
+        """
         return {
-            "klass": self.klass,
+            'klass': self.klass,
             'id': self.id,
             'dbSymbol': self.dbSymbol,
             'forms': self.forms,
@@ -206,10 +210,14 @@ class Pokemon:
         }
 
     @staticmethod
-    def from_dict(data: dict):
+    def from_dict(data: dict) -> "Pokemon":
+        """
+        Create a Pokémon from a dictionary
+        """
         pokemon = Pokemon.__new__(Pokemon)
         pokemon.__dict__.update(data)
-
+        pokemon.moves = [Move.from_dict(move_data) for move_data in data["moves"]]
+        return pokemon
 
     @staticmethod
     def create_pokemon(name: str, level: int) -> "Pokemon":

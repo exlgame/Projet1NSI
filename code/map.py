@@ -35,15 +35,13 @@ class Map:
         self.collisions: list[pygame.Rect] | None = None
         self.sql: SQL = SQL()
 
-        self.current_map: Switch = Switch("switch", "map_0", pygame.Rect(0, 0, 0, 0), 0)
+        self.current_map: Switch | None
         self.map_name: str | None = None
         self.map_name_text: None | str = None
 
         self.image_change_map: pygame.image = pygame.image.load("../assets/interfaces/maps/frame_map.png").convert_alpha()
         self.animation_change_map: int = 0
         self.animation_change_map_active: bool = False
-
-        self.switch_map(self.current_map)
 
     def switch_map(self, switch: Switch) -> None:
         """
@@ -126,19 +124,6 @@ class Map:
         position = self.tmx_data.get_object_by_name("spawn " + self.current_map.name + " " + str(switch.port))
         self.player.position = pygame.math.Vector2(position.x, position.y)
 
-    def save_in_file(self, path: str) -> None:
-        """
-        Save the map in a file
-        :param path:
-        :return:
-        """
-        if not pathlib.Path(f"../assets/saves/{path}/maps/{self.current_map.name}").exists():
-            os.makedirs(f"../assets/saves/{path}/maps/{self.current_map.name}")
-        with open(f"../assets/saves/{path}/maps/{self.current_map.name}", "w") as file:
-            json.dump(self.tmx_data.tiledgidmap, file)
-        for i, layer in enumerate(self.tmx_data.visible_layers):
-            with open(f"../assets/saves/{path}/maps/{self.current_map.name}/layer{i}", "w") as file:
-                json.dump(layer.data, file)
 
     def set_draw_change_map(self, map_name: str) -> None:
         """
@@ -189,4 +174,7 @@ class Map:
             self.animation_change_map = 0
 
     def load_map(self, map: str) -> None:
+        """
+        Load the map from the map name
+        """
         self.switch_map(Switch("switch", map, pygame.rect.Rect(0, 0, 0, 0), 0))

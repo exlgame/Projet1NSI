@@ -141,6 +141,9 @@ class DialogueData:
             self.speaker_name = match.group(1).strip()
             self.speaker_image = match.group(2).strip().split(',')
             self.text = format_text(match.group(3).strip())
+        else:
+            self.text = format_text(string)
+
 
     def __str__(self) -> str:
         """
@@ -177,6 +180,14 @@ class DialogueScreen:
         self.background_name: pygame.Surface = pygame.image.load("../assets/interfaces/dialogues/name_box_0.png").convert_alpha()
 
         self.speaker_name: pygame.Surface = self.font.render(self.dialogue_data.speaker_name, True, (255, 255, 255))
+        if self.dialogue_data.speaker_image:
+            self.speaker_image: pygame.Surface = pygame.image.load(
+                f"../assets/interfaces/characters/battlers/{self.dialogue_data.speaker_image[1]}.png").convert_alpha()
+        try:
+            self.player_image: pygame.Surface = pygame.image.load(
+                f"../assets/interfaces/characters/battlers/heros_swan_big.png").convert_alpha()
+        except FileNotFoundError:
+            pass
 
         self.time_wait: time = time.time()
         self.lines: list[str] = self.dialogue_data.text.split("\n")
@@ -231,8 +242,9 @@ class DialogueScreen:
         if self.lines_offset[-1] == len(self.lines[-1]):
             self.finished = True
 
-        if self.dialogue_data.speaker_name != "error":
+        if self.dialogue_data.speaker_name != "error" and self.dialogue_data.speaker_image:
             if self.dialogue_data.speaker_name == "heros":
+                self.screen.display.blit(self.player_image, (-128, 78))
                 self.screen.display.blit(self.background_name, (-8, 480))
                 self.screen.display.blit(self.speaker_name, (
                     -8 + self.background_name.get_width() // 2 - self.speaker_name.get_width() // 2, 488))
@@ -243,6 +255,8 @@ class DialogueScreen:
                     else:
                         self.speaker_offset += 1
 
+                self.screen.display.blit(self.speaker_image, (1280 - self.speaker_image.get_width() + 128 - self.speaker_offset,
+                                                              78))
                 self.screen.display.blit(self.background_name,
                                          (1280 - 124 - self.background_name.get_width() // 2, 480))
                 self.screen.display.blit(self.speaker_name, (

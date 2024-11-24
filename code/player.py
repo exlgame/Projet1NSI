@@ -14,7 +14,6 @@ class Player(Entity):
     """
     Player class to manage the player
     """
-
     def __init__(self, screen: Screen, controller: Controller, x: int, y: int, keylistener: KeyListener,
                  ingame_time: datetime.timedelta = datetime.timedelta(seconds=0), gender: str = "red_m") -> None:
         """
@@ -26,7 +25,7 @@ class Player(Entity):
         :param keylistener:
         :param ingame_time:
         """
-        super().__init__(screen, x, y, f"hero_01{gender}")
+        super().__init__(screen, x, y, f"hero_01_{gender}")
         self.keylistener: KeyListener = keylistener
         self.controller: Controller = controller
         self.pokemons: list[Pokemon] = []
@@ -50,17 +49,23 @@ class Player(Entity):
         self.collisions: list[pygame.Rect] | None = None
         self.change_map: Switch | None = None
 
-    def from_dict(self, data: dict):
+    def from_dict(self, data: dict) -> None:
+        """
+        Set the player from a dictionary
+        :param data:
+        :return:
+        """
         self.name = data["name"]
         self.gender = data["gender"]
         self.position = pygame.math.Vector2(data["position"]["x"], data["position"]["y"])
         self.align_hitbox()
         self.direction = data["direction"]
-        self.pokemons = [Pokemon.from_dict(pokemon) for pokemon in data["pokemon"]]
+        self.pokemons = [Pokemon.from_dict(pokemon) for pokemon in data["pokemons"]]
         self.inventory = data["inventory"]
         self.pokedex = data["pokedex"]
-        self.pokedollars = data["pokedollars "]
+        self.pokedollars = data["pokedollars"]
         self.ingame_time = datetime.timedelta(seconds=data["ingame_time"])
+
 
     def update(self) -> None:
         """

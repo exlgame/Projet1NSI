@@ -13,7 +13,7 @@ class Save:
     """
     Save class to manage the save
     """
-    def __init__(self, path: str, map: Map, player = Player, keylistener = KeyListener, dialogue = Dialogue):
+    def __init__(self, path: str, map: Map, player: Player, keylistener: KeyListener, dialogue: Dialogue):
         """
         Initialize the save
         :param path:
@@ -40,7 +40,7 @@ class Save:
                 "y": position[1]
             },
             "direction": self.map.player.direction,
-            "pokemon": [pokemon.to_dict() for pokemon in self.player.pokemons],
+            "pokemons": [pokemon.to_dict() for pokemon in self.player.pokemons],
             "inventory": self.map.player.inventory,
             "pokedex": self.map.player.pokedex,
             "pokedollars": self.map.player.pokedollars,
@@ -56,10 +56,10 @@ class Save:
         }
 
         if not pathlib.Path(f"../assets/saves/{self.path}/data.pkmn").exists():
-            os.makedirs(f"../assets/{self.path}/data")
+            os.makedirs(f"../assets/saves/{self.path}")
             pathlib.Path(f"../assets/saves/{self.path}/data.pkmn").touch()
 
-        with open(f"../assets/saves/{self.path}/data.pkmn", "w") as file:
+        with open(f"../../assets/saves/{self.path}/data.pkmn", "w") as file:
             file.write(self.dump(data))
 
         self.dialogue.load_data(100, 0)
